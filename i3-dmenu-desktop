@@ -131,10 +131,7 @@ find(
     {
         wanted => sub {
             return unless substr($_, -1 * length('.desktop')) eq '.desktop';
-            my $relative = $File::Find::name;
-
-            # + 1 for the trailing /, which is missing in ::topdir.
-            substr($relative, 0, length($File::Find::topdir) + 1) = '';
+            my $relative = basename($File::Find::name);
 
             # Don’t overwrite files with the same relative path, we search in
             # descending order of importance.
