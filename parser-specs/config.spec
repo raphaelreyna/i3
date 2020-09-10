@@ -37,6 +37,7 @@ state INITIAL:
   'no_focus'                               -> NO_FOCUS
   'focus_follows_mouse'                    -> FOCUS_FOLLOWS_MOUSE
   'mouse_warping'                          -> MOUSE_WARPING
+  'targeted_warping'                       -> TARGETED_WARPING
   'focus_wrapping'                         -> FOCUS_WRAPPING
   'force_focus_wrapping'                   -> FORCE_FOCUS_WRAPPING
   'force_xinerama', 'force-xinerama'       -> FORCE_XINERAMA
@@ -652,3 +653,15 @@ state BAR_COLORS_TEXT:
       -> call cfg_bar_color($colorclass, $border, $background, NULL); BAR_COLORS
   text = word
       -> call cfg_bar_color($colorclass, $border, $background, $text); BAR_COLORS
+
+################################################################################
+# Targeted warping configuration
+################################################################################
+# targeted_warping x_position|y_position <percent>
+state TARGETED_WARPING:
+  scope = 'x_position', 'y_position'
+      -> TARGETED_WARPING_WITH_SCOPE
+
+state TARGETED_WARPING_WITH_SCOPE:
+  value = number
+      -> call cfg_targeted_warping($scope, &value)

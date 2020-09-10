@@ -681,3 +681,14 @@ CFGFUN(bar_finish) {
     /* Simply reset the pointer, but don't free the resources. */
     current_bar = NULL;
 }
+
+CFGFUN(targeted_warping, const char *scope, const long value) {
+    int position = (int)value;
+    if (!strcmp(scope, "x_position")) {
+        config.targeted_warping.x_position = position;
+    } else if (!strcmp(scope, "y_position")) {
+        config.targeted_warping.y_position = position;
+    } else {
+        ELOG("Invalid command, cannot process scope %s", scope);
+    }
+}

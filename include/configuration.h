@@ -251,6 +251,8 @@ struct Config {
 
     /* The number of currently parsed barconfigs */
     int number_barconfigs;
+
+    targeted_warping_t targeted_warping;
 };
 
 /**

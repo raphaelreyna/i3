@@ -44,6 +44,7 @@ typedef struct Con Con;
 typedef struct Match Match;
 typedef struct Assignment Assignment;
 typedef struct Window i3Window;
+typedef struct targeted_warping_t targeted_warping_t;
 typedef struct mark_t mark_t;
 
 /******************************************************************************
@@ -141,6 +142,11 @@ typedef enum {
     FOCUS_WRAPPING_FORCE = 2,
     FOCUS_WRAPPING_WORKSPACE = 3
 } focus_wrapping_t;
+
+struct targeted_warping_t {
+    int x_position;
+    int y_position;
+};
 
 /**
  * Stores a rectangle, for example the size of a window, the child window etc.
